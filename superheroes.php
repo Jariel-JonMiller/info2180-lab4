@@ -61,7 +61,7 @@ $superheroes = [
       "alias" => "Scarlett Witch",
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
-];
+];    
 
 ?>
 
@@ -70,3 +70,21 @@ $superheroes = [
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+
+<?php
+    if (isset($_POST['Superhero'])){ 
+        $heroName = $_POST['Superhero'];
+
+        //echo "<h2>" . $heroName . "</h2>";
+
+        if (!empty($heroName)) {
+            foreach ($superheroes as $superhero) {
+                if (strpos($superhero['alias'], $heroName) !== false) {
+                    echo $superhero['alias'];
+                    echo "<br>";
+                }
+            }
+        }
+    }
+?>
+

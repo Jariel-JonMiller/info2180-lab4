@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avengers Character Search</title>
-    <link rel="stylesheet" href="styles.css">
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Avengers Character Search</title> 
+    <link rel="stylesheet" href="styles.css"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!--script src="app.js"></script-->
-</head>
-<body>
-    
+</head> 
+
+<body> 
+    <div class=" grid-layout"> 
+        <header>
+            <h1>Avengers Character Search</h1>
+        </header>
+        <main>
+            <p><h3>Search by Full Name or Alias</h3></p>
+            <div class="collect-hero">
+            <form action="#">
+                <div class="hero-who">
+                    <input type="text" name="heroName" placeholder="e.g. Captain America or Steve Rogers">
+                    <p id="set"></p>
+                </div>
+                <div>
+                    <button class="searchbar" id="test">Search</button>
+                </div>
+            </form>
+            </div>
+        </main>
+    </div>
     <script src="app.js"></script>
-    <div><h1>Avengers Character Search</h1></div>
-
-    <button id="test">Search</button>        
-
-</body>
+</body> 
 </html>
