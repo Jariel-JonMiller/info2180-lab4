@@ -61,30 +61,51 @@ $superheroes = [
       "alias" => "Scarlett Witch",
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
-];    
+]; 
 
-?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+function printSuperHeroes(){
+    global $superheroes;
 
-<?php
-    if (isset($_POST['Superhero'])){ 
-        $heroName = $_POST['Superhero'];
+    echo "<ul>";
+        
+    foreach($superheroes as $superhero): 
+        echo "<li>" . $superhero['alias'] . "</li>";
+    endforeach;
+    
+    echo "</ul>";    
+}
 
-        //echo "<h2>" . $heroName . "</h2>";
+function HeroSearch($input) {
 
-        if (!empty($heroName)) {
-            foreach ($superheroes as $superhero) {
-                if (strpos($superhero['alias'], $heroName) !== false) {
-                    echo $superhero['alias'];
-                    echo "<br>";
-                }
-            }
-        }
+    global $superheroes;
+
+    $heroAlias = array_search($input, array_column($superheroes, 'alias'));
+    $heroName = array_search($input, array_column($superheroes, 'name'));
+
+    if ($heroName !== false){
+        echo "<h3>" . $superheroes[$heroName]['alias'] . "</h3>";
+        echo "<h4>" . "A.K.A " . $superheroes[$heroName]['name'] . "</h4>";
+        echo "<p>" . $superheroes[$heroName]['biography'] . "</p>";
+    } elseif ($heroAlias !== false){
+        echo "<h3>" . $superheroes[$heroAlias]['alias'] . "</h3>";
+        echo "<h4>" . "A.K.A " . $superheroes[$heroAlias]['name'] . "</h4>";
+        echo "<p>" . $superheroes[$heroAlias]['biography'] . "</p>";
+    } else {
+        echo "<h5>" . "Superhero not found!" . "</h5>";
     }
-?>
+}
 
+function driver($searchParam){
+    if ($searchParam !== '') {
+        HeroSearch($searchParam);
+    } else {
+        printSuperHeroes();
+    }
+}
+
+
+$searchParam = isset($_GET['query']) ? $_GET['query'] : '';
+driver($searchParam);
+
+?>

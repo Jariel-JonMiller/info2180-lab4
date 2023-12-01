@@ -9,21 +9,15 @@ body {
 
 header {
     display: flex;
-    background-color: rgb(43, 143, 201);
+    background-color: cyan;
     color: white;
     /*align-content: center;*/
     justify-content: center;
     
 }
 
-main {
+.container {
     margin: 0px 150px;
-    grid-column: span 2;
-}
-
-.collect-hero {
-    background-color: aqua;
-    height: 50px;
 }
 
 input {
@@ -35,4 +29,8 @@ input {
     float: right;
     width: 6%;   
     background-color: red;
+}
+
+.result {
+    background-color: blueviolet;
 }
